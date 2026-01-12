@@ -5,13 +5,16 @@ import { HomePage, MethodPage, AboutPage, ComparePage } from '@/views';
 import '@/styles/global.css';
 import '@/styles/components.css';
 
+// Base path for routing (matches Vite config)
+const basename = import.meta.env.BASE_URL;
+
 /**
  * Main App component with routing
  */
 function App() {
   return (
     <AppStateProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/methods/:methodId" element={<MethodPage />} />
