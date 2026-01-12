@@ -3,6 +3,9 @@
 An interactive visualization platform for exploring process mining methods that work with unstructured data sources. Built with React, D3.js, and the Nord color palette.
 
 
+Live Version: 
+[https://chimenkamp.github.io/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstrutured-Data/](https://chimenkamp.github.io/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstrutured-Data/) 
+
 ## ➕ Adding a New Method
 
 To add a new method, edit `data/methods.json`:
