@@ -21,6 +21,8 @@ body {
   background-color: var(--bg);
   min-height: 100vh;
   overflow: hidden;
+  transition: background-color var(--duration-normal) var(--ease-out),
+              color var(--duration-normal) var(--ease-out);
 }
 
 #root {

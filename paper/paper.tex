@@ -1,0 +1,269 @@
+% !TeX encoding = UTF-8
+% !TeX program = pdflatex
+% !BIB program = biber
+
+\documentclass[english]{lni}
+\begin{document}
+\title[]{From Unstructured Data to Process Insights: A Repository for Methods, Benchmarks, and Algorithms}
+
+\author[1]{Christian Imenkamp}{christian.imenkamp@uni-bayreuth.de}{0009-0007-4295-1268}
+\author[1]{Yorck Zisgen}{yorck.zisgen@uni-bayreuth.de}{0000-0002-9646-2829}
+\author[1]{Agnes Koschmider}{agnes.koschmider@uni-bayreuth.de}{0000-0001-8206-7636}
+\affil[1]{Universität Bayreuth\\Lehrstuhl für Wirtschaftsinformatik und Process Analytics\\Wittelsbacherring 8\\95447 Bayreuth\\Deutschland}
+
+\maketitle
+
+\begin{abstract}
+Organizations increasingly generate process data from unstructured sources such as IoT sensors, videos, and natural language documents.
+However, methods for transforming this data into process mining insights remain scattered across disparate publications.
+This fragmentation hinders both researchers seeking open research questions and practitioners searching for applicable solutions.
+We present a collaborative web-based repository that consolidates methods, algorithms, and datasets for process mining with unstructured data.
+The platform organizes contributions along a standardized six-step pipeline, enables filtering by modality and task, and facilitates method comparison.
+We describe the repository's design requirements, architecture, and contribution workflow.
+The platform is publicly available and invites community contributions to foster knowledge consolidation in this emerging research area.
+\end{abstract}
+
+\begin{keywords}
+    Process Mining \and Unstructured Data \and Data Pipeline \and Repository \and Collaboration
+\end{keywords}
+
+
+\section{Introduction}
+\label{sec:introduction}
+
+% Paragraph 1: Business context and data landscape
+Modern organizations generate vast amounts of process-related data from diverse sources.
+Internet of Things (IoT) devices produce continuous sensor streams in manufacturing environments.
+Surveillance cameras capture video recordings of physical processes.
+Additionally, textual documents such as emails, reports, and chat logs contain implicit process information.
+These unstructured data sources complement traditional information systems and offer rich insights into organizational processes.
+
+% Paragraph 2: Process mining and the event log assumption
+Process mining enables organizations to extract actionable insights from recordings of prior process executions.
+The discipline encompasses techniques for process discovery, conformance checking, and process enhancement.
+However, most process mining approaches assume a structured event log as input.
+An event log comprises timestamped events, each associated with a case identifier and an activity label.
+This assumption poses a fundamental challenge: unstructured data sources rarely conform to this expected format.
+
+% Paragraph 3: The transformation challenge
+Transforming unstructured data into event logs requires addressing multiple technical challenges.
+First, raw data must be collected and integrated from heterogeneous sources.
+Second, preprocessing steps must clean and normalize the data.
+Third, abstraction algorithms must aggregate low-level signals into meaningful activities.
+Fourth, case correlation techniques must group events by process instance.
+Fifth, visualization methods must present results in an interpretable manner.
+Finally, mining algorithms can extract process models and insights.
+In prior work~\cite{pm-unstructured-challenges}, we formalized this transformation as a six-step pipeline.
+
+% Paragraph 4: Research fragmentation problem
+Research addressing these pipeline steps remains fragmented across diverse venues.
+Publications appear in process mining conferences, machine learning journals, and domain-specific workshops.
+Furthermore, terminology varies substantially between authors.
+For instance, the abstraction step is alternatively termed ``activity recognition,'' ``event detection,'' or ``feature extraction.''
+This dispersion and ambiguity create barriers for researchers and practitioners alike.
+Researchers struggle to identify open research questions and related prior work.
+Practitioners cannot efficiently locate methods applicable to their specific data modalities.
+
+% Paragraph 5: Contribution and paper structure
+To address these challenges, we present an open repository that consolidates methods for process mining with unstructured data.
+The platform organizes contributions along the standardized pipeline and enables multi-dimensional filtering.
+Section~\ref{sec:requirements} specifies the requirements that guided the repository design.
+Section~\ref{sec:audience} identifies target user groups and their use cases.
+Section~\ref{sec:repository} presents the platform architecture and features.
+Section~\ref{sec:contribution} describes how community members can contribute.
+Section~\ref{sec:outlook} discusses limitations and future directions.
+
+
+\section{Requirements}
+\label{sec:requirements}
+
+The repository design follows five core requirements derived from the identified problems.
+These requirements guide the platform architecture and feature selection.
+
+\textbf{R1: Unified Organization.}
+The platform must organize methods along a common conceptual framework.
+We adopt the six-step pipeline from prior work~\cite{pm-unstructured-challenges}: Collect, Preprocess, Abstract \& Aggregate, Correlate Cases, Enhance \& Visualize, and Apply Mining.
+This taxonomy provides a shared vocabulary and enables systematic classification.
+
+\textbf{R2: Comprehensive Method Documentation.}
+Each method entry must capture essential information for understanding and applying the approach.
+Required fields include a description, algorithm summary, inputs, outputs, assumptions, and limitations.
+Additionally, entries must specify the targeted data modalities and pipeline tasks.
+This structured documentation enables informed method selection.
+
+\textbf{R3: Multi-Dimensional Filtering.}
+Users must be able to filter methods by multiple criteria simultaneously.
+Relevant dimensions include pipeline step, data modality (e.g., text, image, video, sensor), task type, maturity level, and evidence type.
+Efficient filtering reduces the search space and surfaces relevant methods quickly.
+
+\textbf{R4: Artifact Linkage.}
+Entries must link to associated research artifacts where available.
+Relevant artifacts include source code repositories, datasets, demonstration systems, and publication DOIs.
+Direct artifact access accelerates method adoption and reproducibility assessment.
+
+\textbf{R5: Community Contribution.}
+The platform must support collaborative curation by the research community.
+Contributors must be able to add new methods through a standardized process.
+Furthermore, the contribution workflow must include validation to ensure data quality.
+
+
+\section{Target Audience and Use Cases}
+\label{sec:audience}
+
+The repository serves two primary user groups: researchers and practitioners.
+Each group benefits from distinct platform capabilities.
+
+\subsection{Researchers}
+
+Researchers require an overview of existing approaches before positioning their own contributions.
+The repository addresses this need through several mechanisms.
+
+\textbf{Literature Discovery.}
+The unified organization along the pipeline (R1) enables researchers to identify relevant prior work systematically.
+Filtering by modality and task (R3) narrows results to the specific research context.
+Hence, researchers can efficiently construct a comprehensive related work section.
+
+\textbf{Gap Identification.}
+The platform visualizes method distribution across pipeline steps and modalities.
+Underrepresented combinations indicate potential research opportunities.
+For instance, sparse coverage of video-based case correlation signals an open research direction.
+Thus, researchers can identify and justify novel contributions.
+
+\textbf{Baseline Selection.}
+Comprehensive method documentation (R2) enables comparison of algorithmic approaches.
+Artifact linkage (R4) facilitates access to implementations for benchmarking.
+Consequently, researchers can select appropriate baselines for experimental evaluation.
+
+\subsection{Practitioners}
+
+Practitioners seek applicable solutions for their specific data and process contexts.
+The repository supports solution discovery through targeted features.
+
+\textbf{Method Selection.}
+Filtering by modality and task (R3) surfaces methods compatible with the practitioner's data sources.
+The structured inputs and outputs documentation (R2) clarifies method applicability.
+Additionally, maturity level indicators distinguish production-ready solutions from early-stage research.
+
+\textbf{Implementation Access.}
+Artifact linkage (R4) provides direct access to code repositories and demonstration systems.
+This access reduces the barrier to method adoption.
+Furthermore, linked datasets enable practitioners to test methods before deployment.
+
+\textbf{Solution Comparison.}
+The platform's comparison feature enables side-by-side method evaluation.
+Practitioners can assess trade-offs between automation level, required inputs, and generated outputs.
+Thereby, they can make informed technology selection decisions.
+
+
+\section{The Repository Platform}
+\label{sec:repository}
+
+The repository platform implements the specified requirements through a modular web application.
+This section describes the core features and their relationship to the requirements.
+
+\subsection{Pipeline Visualization}
+
+The central interface element displays the six-step pipeline as an interactive visualization.
+Each step appears as a distinct node with its associated color coding.
+Method counts indicate the number of entries per step.
+Users can click a pipeline step to filter the method list accordingly.
+This feature directly addresses R1 by grounding navigation in the shared conceptual framework.
+
+\subsection{Method Catalog}
+
+The method catalog presents all repository entries in a searchable, filterable list.
+Each entry displays the method name, associated pipeline step, and key metadata.
+A search bar enables free-text queries across method names and descriptions.
+The filter panel provides faceted navigation by modality, task, maturity level, and evidence type.
+This implementation fulfills R2 and R3.
+
+\subsection{Method Detail View}
+
+Selecting a method opens a detailed view containing all documented information.
+The view presents the algorithm summary, inputs, outputs, assumptions, and limitations.
+Tags indicate the targeted data modalities and pipeline tasks.
+A references section lists the source publication with DOI link.
+An artifacts section provides links to code repositories, datasets, and demonstrations (R4).
+Related methods appear as navigable links for exploring adjacent work.
+
+\subsection{Comparison Feature}
+
+Users can select multiple methods for side-by-side comparison.
+The comparison view presents a table contrasting key attributes.
+A radar chart visualizes differences across dimensions such as automation level and evidence type.
+This feature supports informed method selection for both researchers and practitioners.
+
+\subsection{Relationship Graph}
+
+An alternative visualization displays methods as a network graph.
+Nodes represent methods, and edges indicate explicit relationships or computed similarity.
+Users can drag nodes to explore the structure and zoom for detail.
+Filters apply to the graph view, enabling focused exploration of method clusters.
+
+
+\section{Contribution Workflow}
+\label{sec:contribution}
+
+Community contribution is essential for maintaining a comprehensive and current repository (R5).
+The platform supports contributions through a structured workflow.
+
+\subsection{Data Format}
+
+Methods are stored in a JSON file following a defined schema.
+The schema specifies required fields including identifier, name, pipeline step, and description.
+Additional required fields ensure comprehensive documentation: algorithm summary, inputs, outputs, modalities, tasks, assumptions, limitations, and references.
+Optional fields capture artifacts and related method identifiers.
+Automated schema validation prevents malformed entries.
+
+\subsection{Contribution Process}
+
+Contributors follow a standard open-source workflow.
+First, the contributor forks the repository on GitHub.
+Second, they add their method entry to the JSON data file.
+Third, a local validation script checks schema compliance.
+Fourth, the contributor submits a pull request.
+Fifth, maintainers review the submission for completeness and accuracy.
+Upon approval, the contribution merges into the main branch and appears on the platform.
+
+\subsection{Quality Assurance}
+
+Multiple mechanisms ensure data quality.
+The JSON schema enforces structural correctness.
+Required fields prevent incomplete entries.
+Maintainer review verifies content accuracy and relevance.
+Version control enables tracking of all modifications.
+These safeguards maintain repository integrity while enabling open contribution.
+
+
+\section{Outlook}
+\label{sec:outlook}
+
+The repository addresses the fragmentation of research on process mining with unstructured data.
+Nevertheless, several limitations and opportunities for future work remain.
+
+\subsection{Current Limitations}
+
+The platform currently contains an initial set of methods curated by the authors.
+Broader community adoption is necessary to achieve comprehensive coverage.
+Furthermore, the current feature set does not support user accounts or contribution tracking.
+The relationship graph relies on explicitly declared relationships and simple similarity metrics.
+Advanced semantic analysis could improve relationship detection.
+
+\subsection{Future Directions}
+
+We plan to extend the platform in several directions.
+First, we will actively solicit contributions from the research community at relevant venues.
+Second, we will implement user accounts to track contributions and enable notifications.
+Third, we will integrate publication metadata from academic databases to enrich method entries.
+Fourth, we will develop benchmark datasets that span the complete pipeline for end-to-end evaluation.
+Fifth, we will explore semantic analysis techniques for automatic relationship discovery.
+
+\subsection{Community Call}
+
+The repository is publicly available at the project URL\footnote{\url{https://chimenkamp.github.io/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstrutured-Data/}}.
+We invite researchers and practitioners to contribute their methods, datasets, and tools.
+Collaborative curation will establish the platform as a central reference point for the emerging field of process mining with unstructured data.
+
+
+%% \printbibliography
+\end{document}

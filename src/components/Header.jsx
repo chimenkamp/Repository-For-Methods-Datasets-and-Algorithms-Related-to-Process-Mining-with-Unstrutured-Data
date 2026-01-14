@@ -87,6 +87,12 @@ export default function Header() {
             Explorer
           </Link>
           <Link
+            to="/relationships"
+            className={`header__nav-link ${isActive('/relationships') ? 'header__nav-link--active' : ''}`}
+          >
+            Graph
+          </Link>
+          <Link
             to="/about"
             className={`header__nav-link ${isActive('/about') ? 'header__nav-link--active' : ''}`}
           >

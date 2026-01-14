@@ -17,6 +17,7 @@
   --nord8: #88c0d0;
   --nord9: #81a1c1;
   --nord10: #5e81ac;
+  /* Aurora palette */
   --nord11: #bf616a;
   --nord12: #d08770;
   --nord13: #ebcb8b;
@@ -24,7 +25,7 @@
   --nord15: #b48ead;
 
   /* ----------------------------------------
-     Semantic Surface Tokens
+     Semantic Surface Tokens (Dark Mode)
      Deep backgrounds, minimal layering
      ---------------------------------------- */
   --bg: var(--nord0);
@@ -84,6 +85,12 @@
   --mod-mixed: rgba(143, 188, 187, 0.9);
 
   /* ----------------------------------------
+     Theme Toggle
+     ---------------------------------------- */
+  --theme-toggle-bg: var(--surface);
+  --theme-toggle-icon: var(--text-muted);
+
+  /* ----------------------------------------
      Spacing Scale (8px base)
      ---------------------------------------- */
   --sp-1: 4px;
@@ -126,4 +133,83 @@
   --header-height: 52px;
   --content-max: 1200px;
   --sidebar-width: 280px;
+}
+
+/* ============================================
+   Light Mode - Nord Snow Storm + Aurora
+   ============================================ */
+[data-theme="light"] {
+  /* ----------------------------------------
+     Light Mode Surface Tokens
+     Soft grays, not harsh white
+     ---------------------------------------- */
+  --bg: #e5e9f0;                      /* nord5 - soft gray, not pure white */
+  --bg-subtle: #d8dee9;               /* nord4 */
+  --surface: #eceff4;                 /* nord6 - slightly lighter for cards */
+  --surface-raised: #ffffff;          /* white for elevated elements */
+  --surface-overlay: #d8dee9;         /* nord4 for overlays */
+
+  /* ----------------------------------------
+     Light Mode Text Tokens
+     Dark Polar Night for readability
+     ---------------------------------------- */
+  --text: #2e3440;                    /* nord0 - primary text */
+  --text-secondary: #3b4252;          /* nord1 - secondary text */
+  --text-muted: #4c566a;              /* nord3 - muted text */
+  --text-faint: #9aa5b8;              /* lighter for placeholders */
+
+  /* ----------------------------------------
+     Light Mode Border & Divider Tokens
+     ---------------------------------------- */
+  --border: rgba(46, 52, 64, 0.2);
+  --border-subtle: rgba(46, 52, 64, 0.1);
+  --divider: rgba(46, 52, 64, 0.12);
+
+  /* ----------------------------------------
+     Light Mode Accent - Aurora Frost Blue
+     Slightly deeper for contrast
+     ---------------------------------------- */
+  --accent: #5e81ac;                  /* nord10 - deeper blue for light mode */
+  --accent-muted: rgba(94, 129, 172, 0.12);
+  --accent-hover: #81a1c1;            /* nord9 */
+  --accent-text: #5e81ac;             /* nord10 */
+
+  /* ----------------------------------------
+     Light Mode Secondary Colors (Aurora)
+     Slightly more saturated for visibility
+     ---------------------------------------- */
+  --color-success: #8fbcbb;           /* nord7 - teal for success */
+  --color-warning: #d08770;           /* nord12 - aurora orange */
+  --color-error: #bf616a;             /* nord11 - aurora red */
+
+  /* ----------------------------------------
+     Light Mode Pipeline Step Colors
+     ---------------------------------------- */
+  --step-default: #d8dee9;            /* nord4 */
+  --step-active: var(--accent);
+
+  /* ----------------------------------------
+     Light Mode Modality Colors
+     Aurora palette with stronger saturation
+     ---------------------------------------- */
+  --mod-text: #5e81ac;                /* nord10 */
+  --mod-image: #8fbcbb;               /* nord7 - teal/green */
+  --mod-video: #b48ead;               /* nord15 - aurora purple */
+  --mod-audio: #d08770;               /* nord12 - aurora orange */
+  --mod-sensor: #ebcb8b;              /* nord13 - aurora yellow */
+  --mod-realtime: #bf616a;            /* nord11 - aurora red */
+  --mod-mixed: #a3be8c;               /* nord14 - aurora green */
+
+  /* ----------------------------------------
+     Light Mode Shadows - Softer
+     ---------------------------------------- */
+  --shadow-sm: 0 1px 3px rgba(46, 52, 64, 0.08);
+  --shadow-md: 0 2px 8px rgba(46, 52, 64, 0.1);
+  --shadow-focus: 0 0 0 2px var(--accent-muted);
+
+  /* ----------------------------------------
+     Theme Toggle
+     ---------------------------------------- */
+  --theme-toggle-bg: var(--surface-raised);
+  --theme-toggle-icon: #ebcb8b;       /* nord13 - sun yellow */
 }

@@ -137,6 +137,85 @@
   color: var(--text-secondary);
 }
 
+/* Settings Section */
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sp-4);
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.settings-row__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+}
+
+.settings-row__label {
+  font-size: 14px;
+  font-weight: var(--weight-medium);
+  color: var(--text);
+}
+
+.settings-row__desc {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  height: 36px;
+  padding: 0 var(--sp-4);
+  background: var(--theme-toggle-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.theme-toggle:hover {
+  background: var(--surface-raised);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle__icon {
+  flex-shrink: 0;
+  color: var(--theme-toggle-icon);
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.theme-toggle__icon--sun {
+  color: #ebcb8b;  /* nord13 - aurora yellow */
+}
+
+.theme-toggle__icon--moon {
+  color: #b48ead;  /* nord15 - aurora purple */
+}
+
+.theme-toggle:hover .theme-toggle__icon {
+  color: var(--accent);
+}
+
+.theme-toggle__label {
+  white-space: nowrap;
+}
+
 /* Metadata */
 .about-metadata {
   display: flex;

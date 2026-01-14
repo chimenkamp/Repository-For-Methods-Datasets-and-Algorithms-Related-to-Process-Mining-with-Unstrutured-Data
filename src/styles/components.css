@@ -89,6 +89,8 @@
   background: var(--surface);
   color: var(--text-muted);
   white-space: nowrap;
+  transition: background var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
 }
 
 .tag--accent {
@@ -104,6 +106,15 @@
 .tag--sensor { background: rgba(235, 203, 139, 0.12); color: var(--mod-sensor); }
 .tag--realtime { background: rgba(191, 97, 106, 0.12); color: var(--mod-realtime); }
 .tag--mixed { background: rgba(143, 188, 187, 0.12); color: var(--mod-mixed); }
+
+/* Light mode tag adjustments - stronger backgrounds for visibility */
+[data-theme="light"] .tag--text { background: rgba(94, 129, 172, 0.15); }
+[data-theme="light"] .tag--image { background: rgba(143, 188, 187, 0.18); }
+[data-theme="light"] .tag--video { background: rgba(180, 142, 173, 0.15); }
+[data-theme="light"] .tag--audio { background: rgba(208, 135, 112, 0.15); }
+[data-theme="light"] .tag--sensor { background: rgba(235, 203, 139, 0.2); }
+[data-theme="light"] .tag--realtime { background: rgba(191, 97, 106, 0.12); }
+[data-theme="light"] .tag--mixed { background: rgba(163, 190, 140, 0.18); }
 
 /* ----------------------------------------
    Cards - Flat, not boxy

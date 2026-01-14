@@ -4,7 +4,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstrutured-Data/',
+  base: '/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstructured-Data/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),

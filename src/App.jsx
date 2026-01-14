@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AppStateProvider } from '@/lib';
-import { HomePage, MethodPage, AboutPage, ComparePage } from '@/views';
+import { AppStateProvider, ThemeProvider } from '@/lib';
+import { HomePage, MethodPage, AboutPage, ComparePage, RelationshipPage } from '@/views';
 
 import '@/styles/global.css';
 import '@/styles/components.css';
+import '@/styles/relationship.css';
 
 // Base path for routing (matches Vite config)
 const basename = import.meta.env.BASE_URL;
@@ -13,17 +14,20 @@ const basename = import.meta.env.BASE_URL;
  */
 function App() {
   return (
-    <AppStateProvider>
-      <BrowserRouter basename={basename}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/methods/:methodId" element={<MethodPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/compare" element={<ComparePage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </BrowserRouter>
-    </AppStateProvider>
+    <ThemeProvider>
+      <AppStateProvider>
+        <BrowserRouter basename={basename}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/methods/:methodId" element={<MethodPage />} />
+            <Route path="/relationships" element={<RelationshipPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/compare" element={<ComparePage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </BrowserRouter>
+      </AppStateProvider>
+    </ThemeProvider>
   );
 }
 

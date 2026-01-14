@@ -4,7 +4,7 @@ An interactive visualization platform for exploring process mining methods that 
 
 
 Live Version: 
-[https://chimenkamp.github.io/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstrutured-Data/](https://chimenkamp.github.io/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstrutured-Data/) 
+[https://chimenkamp.github.io/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstructured-Data/](https://chimenkamp.github.io/Repository-For-Methods-Datasets-and-Algorithms-Related-to-Process-Mining-with-Unstructured-Data/) 
 
 ## ➕ Adding a New Method
 

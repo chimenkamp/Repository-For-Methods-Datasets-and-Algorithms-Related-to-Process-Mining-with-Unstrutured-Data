@@ -1,4 +1,4 @@
-import { Header } from '@/components';
+import { Header, ThemeToggle } from '@/components';
 import { useAppState } from '@/lib';
 import { STEP_COLORS } from '@/viz/PipelineViz';
 import '@/styles/about.css';
@@ -111,6 +111,22 @@ export default function AboutPage() {
                   Early-stage research with conceptual frameworks or prototypes
                 </span>
               </div>
+            </div>
+          </section>
+
+          {/* Settings Section */}
+          <section className="about-section">
+            <h2 className="t-section-title" style={{ marginBottom: 'var(--sp-4)' }}>
+              Settings
+            </h2>
+            <div className="settings-row">
+              <div className="settings-row__info">
+                <span className="settings-row__label">Appearance</span>
+                <span className="settings-row__desc">
+                  Switch between dark and light color schemes
+                </span>
+              </div>
+              <ThemeToggle />
             </div>
           </section>
 
